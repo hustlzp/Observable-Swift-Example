@@ -1,0 +1,13 @@
+PODS:
+  - Observable-Swift (0.5.0)
+  - SnapKit (0.19.1)
+
+DEPENDENCIES:
+  - Observable-Swift
+  - SnapKit
+
+SPEC CHECKSUMS:
+  Observable-Swift: aecd04920b22e890f528d42f557c51c525ca79ee
+  SnapKit: eff58d6e3451bf2f482db2eccf86aecf371dc62d
+
+COCOAPODS: 0.39.0

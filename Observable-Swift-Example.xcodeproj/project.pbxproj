@@ -14,6 +14,7 @@
 		05CE23671C6EE7B6001FA120 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05CE23651C6EE7B6001FA120 /* LaunchScreen.storyboard */; };
 		05CE23721C6EE7B6001FA120 /* Observable_Swift_ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CE23711C6EE7B6001FA120 /* Observable_Swift_ExampleTests.swift */; };
 		05CE237D1C6EE7B6001FA120 /* Observable_Swift_ExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CE237C1C6EE7B6001FA120 /* Observable_Swift_ExampleUITests.swift */; };
+		B759AB56C3C6C19E5129421C /* Pods_Observable_Swift_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEC4735D20EF89EE3495735D /* Pods_Observable_Swift_Example.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,9 @@
 		05CE23781C6EE7B6001FA120 /* Observable-Swift-ExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Observable-Swift-ExampleUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		05CE237C1C6EE7B6001FA120 /* Observable_Swift_ExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable_Swift_ExampleUITests.swift; sourceTree = "<group>"; };
 		05CE237E1C6EE7B6001FA120 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		54447291EF146FF24F24AE3F /* Pods-Observable-Swift-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Observable-Swift-Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Observable-Swift-Example/Pods-Observable-Swift-Example.release.xcconfig"; sourceTree = "<group>"; };
+		DEC4735D20EF89EE3495735D /* Pods_Observable_Swift_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Observable_Swift_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6595F3ECFAC78BD01F05B95 /* Pods-Observable-Swift-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Observable-Swift-Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Observable-Swift-Example/Pods-Observable-Swift-Example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B759AB56C3C6C19E5129421C /* Pods_Observable_Swift_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +86,8 @@
 				05CE23701C6EE7B6001FA120 /* Observable-Swift-ExampleTests */,
 				05CE237B1C6EE7B6001FA120 /* Observable-Swift-ExampleUITests */,
 				05CE235A1C6EE7B6001FA120 /* Products */,
+				2563B71DC46751AC1350EA93 /* Pods */,
+				CB0E1E9FB0EF3C9285E9BABB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,6 +104,7 @@
 		05CE235B1C6EE7B6001FA120 /* Observable-Swift-Example */ = {
 			isa = PBXGroup;
 			children = (
+				05CE238A1C6EE7D1001FA120 /* Views */,
 				05CE235C1C6EE7B6001FA120 /* AppDelegate.swift */,
 				05CE235E1C6EE7B6001FA120 /* ViewController.swift */,
 				05CE23601C6EE7B6001FA120 /* Main.storyboard */,
@@ -125,6 +133,30 @@
 			path = "Observable-Swift-ExampleUITests";
 			sourceTree = "<group>";
 		};
+		05CE238A1C6EE7D1001FA120 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		2563B71DC46751AC1350EA93 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E6595F3ECFAC78BD01F05B95 /* Pods-Observable-Swift-Example.debug.xcconfig */,
+				54447291EF146FF24F24AE3F /* Pods-Observable-Swift-Example.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		CB0E1E9FB0EF3C9285E9BABB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DEC4735D20EF89EE3495735D /* Pods_Observable_Swift_Example.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +164,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 05CE23811C6EE7B7001FA120 /* Build configuration list for PBXNativeTarget "Observable-Swift-Example" */;
 			buildPhases = (
+				CEF03FE52EA771BAAF4988FA /* Check Pods Manifest.lock */,
 				05CE23551C6EE7B6001FA120 /* Sources */,
 				05CE23561C6EE7B6001FA120 /* Frameworks */,
 				05CE23571C6EE7B6001FA120 /* Resources */,
+				CBC528A0CF8533CD31715392 /* Embed Pods Frameworks */,
+				066702826D477ED101EEAC3F /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -250,6 +285,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		066702826D477ED101EEAC3F /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Observable-Swift-Example/Pods-Observable-Swift-Example-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CBC528A0CF8533CD31715392 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Observable-Swift-Example/Pods-Observable-Swift-Example-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CEF03FE52EA771BAAF4988FA /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		05CE23551C6EE7B6001FA120 /* Sources */ = {
@@ -395,6 +478,7 @@
 		};
 		05CE23821C6EE7B7001FA120 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E6595F3ECFAC78BD01F05B95 /* Pods-Observable-Swift-Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Observable-Swift-Example/Info.plist";
@@ -406,6 +490,7 @@
 		};
 		05CE23831C6EE7B7001FA120 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 54447291EF146FF24F24AE3F /* Pods-Observable-Swift-Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Observable-Swift-Example/Info.plist";
@@ -482,6 +567,7 @@
 				05CE23831C6EE7B7001FA120 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		05CE23841C6EE7B7001FA120 /* Build configuration list for PBXNativeTarget "Observable-Swift-ExampleTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +576,7 @@
 				05CE23861C6EE7B7001FA120 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		05CE23871C6EE7B7001FA120 /* Build configuration list for PBXNativeTarget "Observable-Swift-ExampleUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +585,7 @@
 				05CE23891C6EE7B7001FA120 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
