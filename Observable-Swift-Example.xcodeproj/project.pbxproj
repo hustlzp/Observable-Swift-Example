@@ -9,11 +9,16 @@
 /* Begin PBXBuildFile section */
 		05CE235D1C6EE7B6001FA120 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CE235C1C6EE7B6001FA120 /* AppDelegate.swift */; };
 		05CE235F1C6EE7B6001FA120 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CE235E1C6EE7B6001FA120 /* ViewController.swift */; };
-		05CE23621C6EE7B6001FA120 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05CE23601C6EE7B6001FA120 /* Main.storyboard */; };
 		05CE23641C6EE7B6001FA120 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05CE23631C6EE7B6001FA120 /* Assets.xcassets */; };
 		05CE23671C6EE7B6001FA120 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05CE23651C6EE7B6001FA120 /* LaunchScreen.storyboard */; };
 		05CE23721C6EE7B6001FA120 /* Observable_Swift_ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CE23711C6EE7B6001FA120 /* Observable_Swift_ExampleTests.swift */; };
 		05CE237D1C6EE7B6001FA120 /* Observable_Swift_ExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CE237C1C6EE7B6001FA120 /* Observable_Swift_ExampleUITests.swift */; };
+		05CE238C1C6F638B001FA120 /* DeletionDetectableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CE238B1C6F638B001FA120 /* DeletionDetectableTextField.swift */; };
+		05CE238E1C6F63EE001FA120 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CE238D1C6F63EE001FA120 /* TagView.swift */; };
+		05CE23901C6F63F6001FA120 /* HorizonalTagListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CE238F1C6F63F6001FA120 /* HorizonalTagListView.swift */; };
+		05CE23921C6F6478001FA120 /* TagTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CE23911C6F6478001FA120 /* TagTableViewCell.swift */; };
+		05CE23951C6F7110001FA120 /* UIColor+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CE23941C6F7110001FA120 /* UIColor+Helper.swift */; };
+		05CE23971C6F80A6001FA120 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CE23961C6F80A6001FA120 /* Constants.swift */; };
 		B759AB56C3C6C19E5129421C /* Pods_Observable_Swift_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEC4735D20EF89EE3495735D /* Pods_Observable_Swift_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,7 +43,6 @@
 		05CE23591C6EE7B6001FA120 /* Observable-Swift-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Observable-Swift-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		05CE235C1C6EE7B6001FA120 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		05CE235E1C6EE7B6001FA120 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		05CE23611C6EE7B6001FA120 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		05CE23631C6EE7B6001FA120 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		05CE23661C6EE7B6001FA120 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		05CE23681C6EE7B6001FA120 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -48,6 +52,12 @@
 		05CE23781C6EE7B6001FA120 /* Observable-Swift-ExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Observable-Swift-ExampleUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		05CE237C1C6EE7B6001FA120 /* Observable_Swift_ExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable_Swift_ExampleUITests.swift; sourceTree = "<group>"; };
 		05CE237E1C6EE7B6001FA120 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		05CE238B1C6F638B001FA120 /* DeletionDetectableTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeletionDetectableTextField.swift; sourceTree = "<group>"; };
+		05CE238D1C6F63EE001FA120 /* TagView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
+		05CE238F1C6F63F6001FA120 /* HorizonalTagListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizonalTagListView.swift; sourceTree = "<group>"; };
+		05CE23911C6F6478001FA120 /* TagTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagTableViewCell.swift; sourceTree = "<group>"; };
+		05CE23941C6F7110001FA120 /* UIColor+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Helper.swift"; sourceTree = "<group>"; };
+		05CE23961C6F80A6001FA120 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		54447291EF146FF24F24AE3F /* Pods-Observable-Swift-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Observable-Swift-Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Observable-Swift-Example/Pods-Observable-Swift-Example.release.xcconfig"; sourceTree = "<group>"; };
 		DEC4735D20EF89EE3495735D /* Pods_Observable_Swift_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Observable_Swift_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6595F3ECFAC78BD01F05B95 /* Pods-Observable-Swift-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Observable-Swift-Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Observable-Swift-Example/Pods-Observable-Swift-Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -104,13 +114,14 @@
 		05CE235B1C6EE7B6001FA120 /* Observable-Swift-Example */ = {
 			isa = PBXGroup;
 			children = (
+				05CE23931C6F70E2001FA120 /* Extension */,
 				05CE238A1C6EE7D1001FA120 /* Views */,
 				05CE235C1C6EE7B6001FA120 /* AppDelegate.swift */,
 				05CE235E1C6EE7B6001FA120 /* ViewController.swift */,
-				05CE23601C6EE7B6001FA120 /* Main.storyboard */,
 				05CE23631C6EE7B6001FA120 /* Assets.xcassets */,
 				05CE23651C6EE7B6001FA120 /* LaunchScreen.storyboard */,
 				05CE23681C6EE7B6001FA120 /* Info.plist */,
+				05CE23961C6F80A6001FA120 /* Constants.swift */,
 			);
 			path = "Observable-Swift-Example";
 			sourceTree = "<group>";
@@ -136,8 +147,20 @@
 		05CE238A1C6EE7D1001FA120 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				05CE238D1C6F63EE001FA120 /* TagView.swift */,
+				05CE238F1C6F63F6001FA120 /* HorizonalTagListView.swift */,
+				05CE238B1C6F638B001FA120 /* DeletionDetectableTextField.swift */,
+				05CE23911C6F6478001FA120 /* TagTableViewCell.swift */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		05CE23931C6F70E2001FA120 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				05CE23941C6F7110001FA120 /* UIColor+Helper.swift */,
+			);
+			name = Extension;
 			sourceTree = "<group>";
 		};
 		2563B71DC46751AC1350EA93 /* Pods */ = {
@@ -266,7 +289,6 @@
 			files = (
 				05CE23671C6EE7B6001FA120 /* LaunchScreen.storyboard in Resources */,
 				05CE23641C6EE7B6001FA120 /* Assets.xcassets in Resources */,
-				05CE23621C6EE7B6001FA120 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,7 +362,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				05CE235F1C6EE7B6001FA120 /* ViewController.swift in Sources */,
+				05CE238C1C6F638B001FA120 /* DeletionDetectableTextField.swift in Sources */,
 				05CE235D1C6EE7B6001FA120 /* AppDelegate.swift in Sources */,
+				05CE23921C6F6478001FA120 /* TagTableViewCell.swift in Sources */,
+				05CE23951C6F7110001FA120 /* UIColor+Helper.swift in Sources */,
+				05CE238E1C6F63EE001FA120 /* TagView.swift in Sources */,
+				05CE23901C6F63F6001FA120 /* HorizonalTagListView.swift in Sources */,
+				05CE23971C6F80A6001FA120 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,14 +404,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		05CE23601C6EE7B6001FA120 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				05CE23611C6EE7B6001FA120 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		05CE23651C6EE7B6001FA120 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
