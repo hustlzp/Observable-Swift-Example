@@ -17,14 +17,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     private var scrollView: UIScrollView!
     private var scrollContentView: UIView!
     private var textField: DeletionDetectableTextField!
-    private var userTagsView: HorizonalTagListView!
+    private var tagsView: HorizonalTagListView!
     private var matchedTags = [String]()
     
+    private var textFieldText = Observable("")
     private var tags = Observable([String]())
     private var prepareRemoveTag = Observable(false)
     
     private var textFieldDidChangeEvent = EventReference<String>()
-    private var textFieldWillDeleteEvent = EventReference<String>()
     
     // MARK: Lifecycle
     
@@ -81,12 +81,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
         
-        textFieldDidChangeEvent += { (_) in
-            if !self.isNilOrEmpty(self.textField.text) {
+        textFieldText.afterChange += { (_) in
+            if self.textFieldText^ != self.textField.text {
+                self.textField.text = self.textFieldText^
+            }
+            
+            if !self.textFieldText^.isEmpty {
                 self.prepareRemoveTag <- false
             }
             
-            self.matchedTags = Constant.cities.filter { return $0.rangeOfString(self.textField.text!) != nil }
+            self.matchedTags = Constant.cities.filter { return $0.rangeOfString(self.textFieldText^) != nil }
             self.tableView.reloadData()
             
             self.updateTableViewVisibility()
@@ -95,9 +99,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         prepareRemoveTag.afterChange += { (_) in
             if self.prepareRemoveTag^ {
-                self.userTagsView.prepareRemoveTag(self.tags^.count - 1)
+                self.tagsView.prepareRemoveTag(self.tags^.count - 1)
             } else {
-                self.userTagsView.cancelPrepareRemoveTag()
+                self.tagsView.cancelPrepareRemoveTag()
             }
             
             self.updateFinishButtonEnable()
@@ -116,18 +120,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             // TextField left constraint
             self.textField.snp_updateConstraints { (make) -> Void in
                 if self.tags^.count == 0 {
-                    make.left.equalTo(self.userTagsView.snp_right)
+                    make.left.equalTo(self.tagsView.snp_right)
                 } else {
-                    make.left.equalTo(self.userTagsView.snp_right).offset(8)
+                    make.left.equalTo(self.tagsView.snp_right).offset(8)
                 }
             }
             
             // TextField text
-            self.textField.text = ""
-            self.textFieldDidChangeEvent.notify("")
+            self.textFieldText <- ""
             
             // Update tagsView
-            self.userTagsView.updateTags(self.tags^)
+            self.tagsView.updateTags(self.tags^)
             
             // scrollView滑动到最右边
             self.scrollView.setNeedsLayout()
@@ -139,19 +142,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             
             self.updateTableViewVisibility()
             self.updateFinishButtonEnable()
-        }
-        
-        textFieldWillDeleteEvent += { (_) in
-            if !self.isNilOrEmpty(self.textField.text) || self.tags^.count == 0 {
-                return
-            }
-            
-            if self.prepareRemoveTag^ {
-                self.prepareRemoveTag <- false
-                self.tags.value.removeLast()
-            } else {
-                self.prepareRemoveTag <- true
-            }
         }
         
         textField.becomeFirstResponder()
@@ -170,7 +160,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     @objc private func textFieldDidChanged() {
-        textFieldDidChangeEvent.notify("")
+        textFieldText <- textField.text ?? ""
     }
     
     // MARK: Notification Handles
@@ -192,7 +182,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     // MARK: DeletionDetectableTextFieldDelegate
     
     func textFieldWillDelete() {
-        textFieldWillDeleteEvent.notify("")
+        if !textFieldText^.isEmpty || self.tags^.count == 0 {
+            return
+        }
+        
+        if self.prepareRemoveTag^ {
+            self.prepareRemoveTag <- false
+            self.tags.value.removeLast()
+        } else {
+            self.prepareRemoveTag <- true
+        }
     }
     
     // MARK: UITableViewDelegate
@@ -225,7 +224,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if indexPath.row < matchedTags.count {
             tag = matchedTags[indexPath.row]
         } else if indexPath.row == matchedTags.count {
-            tag = textField.text!
+            tag = self.textFieldText^
         }
         
         if tag.isEmpty {
@@ -281,8 +280,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         scrollContentView = UIView()
         scrollView.addSubview(scrollContentView)
         
-        userTagsView = HorizonalTagListView()
-        scrollContentView.addSubview(userTagsView)
+        tagsView = HorizonalTagListView()
+        scrollContentView.addSubview(tagsView)
         
         textField = DeletionDetectableTextField()
         textField.returnKeyType = .Default
@@ -298,13 +297,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             make.edges.equalTo(scrollView)
         }
         
-        userTagsView.snp_makeConstraints { (make) -> Void in
+        tagsView.snp_makeConstraints { (make) -> Void in
             make.centerY.equalTo(scrollContentView)
             make.left.equalTo(scrollContentView)
         }
         
         textField.snp_makeConstraints { (make) -> Void in
-            make.left.equalTo(userTagsView.snp_right)
+            make.left.equalTo(tagsView.snp_right)
             make.width.greaterThanOrEqualTo(120)
             make.centerY.equalTo(scrollContentView)
             make.right.equalTo(scrollContentView)
@@ -334,7 +333,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     // MARK: Internal Helpers
     
     private func updateTableViewVisibility() {
-        if tags^.count == 0 && isNilOrEmpty(textField.text) {
+        if tags^.count == 0 && self.textFieldText^.isEmpty {
             tableView.hidden = true
         } else {
             tableView.hidden = false
@@ -342,7 +341,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     private func updateFinishButtonEnable() {
-        if tags^.count > 0 && isNilOrEmpty(textField.text) && !prepareRemoveTag^ {
+        if tags^.count > 0 && self.textFieldText^.isEmpty && !prepareRemoveTag^ {
             navigationItem.rightBarButtonItem?.enabled = true
         } else {
             navigationItem.rightBarButtonItem?.enabled = false
