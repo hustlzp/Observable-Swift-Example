@@ -18,13 +18,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     private var scrollContentView: UIView!
     private var textField: DeletionDetectableTextField!
     private var tagsView: HorizonalTagListView!
-    private var matchedTags = [String]()
     
+    private var matchedTags = Observable([String]())
     private var textFieldText = Observable("")
     private var tags = Observable([String]())
     private var prepareRemoveTag = Observable(false)
-    
-    private var textFieldDidChangeEvent = EventReference<String>()
     
     // MARK: Lifecycle
     
@@ -90,8 +88,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 self.prepareRemoveTag <- false
             }
             
-            self.matchedTags = Constant.cities.filter { return $0.rangeOfString(self.textFieldText^) != nil }
-            self.tableView.reloadData()
+            self.matchedTags <- Constant.cities.filter { return $0.rangeOfString(self.textFieldText^) != nil }
             
             self.updateTableViewVisibility()
             self.updateFinishButtonEnable()
@@ -126,7 +123,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 }
             }
             
-            // TextField text
             self.textFieldText <- ""
             
             // Update tagsView
@@ -142,6 +138,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             
             self.updateTableViewVisibility()
             self.updateFinishButtonEnable()
+        }
+        
+        matchedTags.afterChange += { (_) in
+            self.tableView.reloadData()
         }
         
         textField.becomeFirstResponder()
@@ -200,12 +200,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if tags^.count == 3 {
             return 0
         } else {
-            return matchedTags.count
+            return matchedTags^.count
         }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let city = matchedTags[indexPath.row]
+        let city = (matchedTags^)[indexPath.row]
         let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as! TagTableViewCell
         cell.update(city)
         return cell
@@ -221,11 +221,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         
         // 添加标签
-        if indexPath.row < matchedTags.count {
-            tag = matchedTags[indexPath.row]
-        } else if indexPath.row == matchedTags.count {
-            tag = self.textFieldText^
-        }
+        tag = (matchedTags^)[indexPath.row]
         
         if tag.isEmpty {
             showAlert("标签不能为空")
@@ -348,14 +344,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
 
-    private func isNilOrEmpty(string: String?) -> Bool {
-        if let string = string {
-            return string.isEmpty
-        } else {
-            return true
-        }
-    }
-    
     private func showAlert(message: String) {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .Alert)
         let confirmAction = UIAlertAction(title: "确认", style: .Default, handler: nil)
