@@ -122,9 +122,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                     make.left.equalTo(self.tagsView.snp_right).offset(8)
                 }
             }
-            
-            self.textFieldText <- ""
-            
+
             // Update tagsView
             self.tagsView.updateTags(self.tags^)
             
@@ -138,6 +136,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             
             self.updateTableViewVisibility()
             self.updateFinishButtonEnable()
+            
+            // Empty textField
+            self.textFieldText <- ""
         }
         
         matchedTags.afterChange += { (_) in
